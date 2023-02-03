@@ -22,13 +22,12 @@ Route::controller(NewsController::class)->prefix('admin')->group(function() {
     Route::get('news/create', 'add');
 });
 
-use App\Http\Controllers\Admin\AAAController;
-Route::controller(AAAController::class)->prefix('admin')->group(function() {
-    Route::get('news/create', 'bbb');
-});
 
-use App\Http\Controllers\Admin\profileController;
-Route::controller(profile::class)->prefix('admin')->group(function() {
+use App\Http\Controllers\Admin\ProfileController;
+Route::controller(ProfileController::class)->prefix('admin')->group(function() {
     Route::get('profile/create', 'add');
     Route::get('profile/edit', 'edit');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
